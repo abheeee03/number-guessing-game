@@ -32,3 +32,15 @@ p, .displayer, input, select{
 #restartbtn{
     margin-left: 7vw;
 }
+a {
+    color: inherit; 
+    text-decoration: none; 
+    border: none;
+}
+.abhee-div{
+    margin-top: 18vh;
+}
+.media-handels{
+    font-size: 8vw;
+    margin-top: 3vh;
+}
