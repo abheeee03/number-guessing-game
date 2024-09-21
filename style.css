@@ -43,4 +43,8 @@ a {
 .media-handels{
     font-size: 8vw;
     margin-top: 3vh;
+    margin-left: -13vw;
+}
+i{
+    margin-left: 10vw;
 }
