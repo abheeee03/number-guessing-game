@@ -1,29 +1,52 @@
-function getRandomNumber(limit){
-    return Math.floor(Math.random() * limit);
-}
+let random_num;
+let upperLimit;
 
-
-document.getElementById('playmode').addEventListener('change', function() {
-    const selectedDifficulty = this.value;
-    const displayNumber = document.getElementById('display_number');
-
-    switch (selectedDifficulty) {
+function updateDifficulty() {
+    const difficulty = document.getElementById('playmode').value;
+    
+    switch (difficulty) {
         case 'Easy':
-            displayNumber.textContent = 'Between 0 to 50';
+            upperLimit = 50;
             break;
         case 'Normal':
-            displayNumber.textContent = 'Between 0 to 100';
+            upperLimit = 100;
             break;
         case 'Hard':
-            displayNumber.textContent = 'Between 0-200';
+            upperLimit = 200;
+            break;
+        case 'Extreme':
+            upperLimit = 500;
             break;
         default:
-            displayNumber.textContent = 'Between 0-500';
+            upperLimit = 500;
             break;
     }
-});
+    
+    random_num = Math.floor(Math.random() * (upperLimit + 1));
+    document.getElementById('display_number').textContent = `Between 0 to ${upperLimit}`;
+}
 
+updateDifficulty();
 
-// const gussed_number;
-// let limit;
-// let random_Number = getRandomNumber(limit)
+function checkTheNum() {
+    const userGuess = Number(document.getElementById('usrinput').value);
+    
+    if (userGuess === random_num) {
+        alert('Congratulations! You won!');
+    } else if (userGuess < random_num) {
+        alert('Try entering a bigger number.');
+    } else if (userGuess > random_num) {
+        alert('Try entering a smaller number.');
+    } else {
+        alert('Please enter a valid number.');
+    }
+
+    document.getElementById('usrinput').value = '';
+}
+
+function restartGame() {
+    location.reload(); 
+}
+
+document.getElementById('playmode').addEventListener('change', updateDifficulty);
+document.getElementById('restartbtn').addEventListener('click', restartGame);
